@@ -1,0 +1,12 @@
+time =                    0
+	memory[0] = 00000111
+	memory[1] = 00001010
+	memory[2] = 00000000
+	memory[3] = 00000000
+
+time =                  150
+	memory[0] = 00000111
+	memory[1] = 00001010
+	memory[2] = 00010001
+	memory[3] = 00000000
+

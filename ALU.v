@@ -1,7 +1,7 @@
-module ALU (input reg [7:0] A,
-            reg [7:0] B,
-            reg [3:0] sel,
-            clk,
+module ALU (input [7:0] A,
+            input [7:0] B,
+            input [1:0] sel,
+            input clk,
             output reg [7:0] Y);
 
 always @(posedge clk) begin
@@ -18,7 +18,7 @@ always @(posedge clk) begin
         2'b10: Y <= A<<1;
         
         // Compare A and B, generate a carry
-        2'b11: Y < = (A == B)? 1'b1: 1'b0;
+        2'b11: Y <= (A == B)? 1'b1: 1'b0;
         
     endcase
 end

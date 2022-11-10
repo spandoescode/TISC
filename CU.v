@@ -1,14 +1,15 @@
-module CU(input reg [3:0] opcode,
+module CU(input [3:0] opcode,
           input clk,
           output logic reg_write_en,
           output logic mem_write_en,
           output logic mem_to_reg,
           output logic mem_op,
-          output reg [1:0] ALU_sel);
+          output reg [1:0] ALU_select
+          );
 
-initial begin
-    ALU_sel = 2'b00;
-end
+// initial begin
+//     ALU_select <= 2'b00;
+// end
 
 always @(posedge clk) begin
     
@@ -20,7 +21,7 @@ always @(posedge clk) begin
         begin
             mem_op       <= 1;
             mem_to_reg   <= 1;
-            reg_write_en <= 0;
+            reg_write_en <= 1;
             mem_write_en <= 0;
         end
         
@@ -35,48 +36,48 @@ always @(posedge clk) begin
         end
         
         // Add
-        // Write to reg, ALU_sel = 0
+        // Write to reg, ALU_select = 0
         4'b0010:
         begin
             mem_op       <= 0;
             mem_to_reg   <= 0;
             reg_write_en <= 1;
             mem_write_en <= 0;
-            ALU_sel      <= 2'b10;
+            ALU_select      <= 2'b00;
         end
         
         // Subtract
-        // No memory operation, ALU_sel = 1
+        // No memory operation, ALU_select = 1
         4'b0011:
         begin
             mem_op       <= 0;
             mem_to_reg   <= 0;
             reg_write_en <= 1;
             mem_write_en <= 0;
-            ALU_sel      <= 2'b01;
+            ALU_select      <= 2'b01;
         end
         
         // LS
-        // No memory operation, ALU_sel = 2
+        // No memory operation, ALU_select = 2
         4'b0100:
         begin
             mem_op       <= 0;
             mem_to_reg   <= 0;
             reg_write_en <= 1;
             mem_write_en <= 0;
-            ALU_sel      <= 2'b10;
+            ALU_select      <= 2'b10;
             
         end
         
         // Compare
-        // No memory operation, ALU_sel = 3
+        // No memory operation, ALU_select = 3
         4'b0101:
         begin
             mem_op       <= 0;
             mem_to_reg   <= 0;
             reg_write_en <= 1;
             mem_write_en <= 0;
-            ALU_sel      <= 2'b11;
+            ALU_select      <= 2'b11;
         end
     endcase
 end
