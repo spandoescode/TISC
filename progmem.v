@@ -5,7 +5,7 @@ reg [255:0] MEM [15:0];
 
 initial
 begin
-    $readmemh("prog.txt", MEM);
+    $readmemb("prog.txt", MEM);
 end
 
 assign instruction = MEM[PC];

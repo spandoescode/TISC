@@ -1,10 +1,10 @@
 module registers (input EN,
                   input clk,
-                  input reg [2:0] write_addr,
+                  input reg [3:0] write_addr,
                   input reg [7:0] write_data,
-                  input reg [2:0] read_addr_1,
+                  input reg [3:0] read_addr_1,
                   output reg [7:0] read_data_1,
-                  input reg [2:0] read_addr_2,
+                  input reg [3:0] read_addr_2,
                   output reg [7:0] read_data_2,
                   );
     

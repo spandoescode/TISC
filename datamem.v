@@ -10,7 +10,7 @@ module datamem (input clk,
     
     initial
     begin
-        $readmemh("data.txt", MEM);
+        $readmemb("data.txt", MEM);
     end
 
     assign read_data = MEM[read_addr]
