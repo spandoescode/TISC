@@ -1,7 +1,10 @@
-module datapath (input clk,
-                 input alu_sel,
-                 input datafromcu,
-                 output opcode);
+module DU (input clk,
+           input reg [1:0] alu_sel,
+           input logic reg_write_en,
+           logic mem_write_en,
+           logic mem_to_reg,
+           logic mem_op,
+           output reg [3:0] opcode);
     
     reg [7:0] PC;
     wire [7:0] PC_next;
@@ -21,7 +24,7 @@ module datapath (input clk,
     //Instantiate the memories and the register page
     registers GPR(.EN(reg_write_en), .clk(clk), .write_addr(reg_write_addr), .write_data(reg_write_data), .read_addr_1(reg_read_addr1), .read_data_1(reg_read_data1), .read_addr_2(reg_read_addr2), .read_data_2(reg_read_data2));
     progmem PROGMEM(.PC(PC), .instruction(instr));
-    datamem DATAMEM(.EN(data_write_en), .clk(clk), .write_addr(data_write_addr), .write_data(data_write_data), .read_addr(data_read_addr) , .read_data(data_read_data));
+    datamem DATAMEM(.EN(mem_write_en), .clk(clk), .write_addr(data_write_addr), .write_data(data_write_data), .read_addr(data_read_addr) , .read_data(data_read_data));
     
     initial begin
         PC <= 8'd0;
