@@ -1,2 +1,5 @@
 tb*
 *.vcd
+*.out
+CU
+top_module
