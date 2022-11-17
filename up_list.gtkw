@@ -1,0 +1,105 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Thu Nov 17 19:09:03 2022
+[*]
+[dumpfile] "/home/nik/Documents/sem7/projects/SDL/TISC/UP_test.vcd"
+[dumpfile_mtime] "Thu Nov 17 18:57:09 2022"
+[dumpfile_size] 9180
+[savefile] "/home/nik/Documents/sem7/projects/SDL/TISC/up_list.gtkw"
+[timestart] 0
+[size] 1305 772
+[pos] -1 -1
+*-5.892282 150 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test_Risc_16_bit.
+[treeopen] test_Risc_16_bit.up.
+[sst_width] 233
+[signals_width] 246
+[sst_expanded] 1
+[sst_vpaned_height] 404
+@28
+test_Risc_16_bit.clk
+@c00022
+test_Risc_16_bit.up.datapath.PC[7:0]
+@28
+(0)test_Risc_16_bit.up.datapath.PC[7:0]
+(1)test_Risc_16_bit.up.datapath.PC[7:0]
+(2)test_Risc_16_bit.up.datapath.PC[7:0]
+(3)test_Risc_16_bit.up.datapath.PC[7:0]
+(4)test_Risc_16_bit.up.datapath.PC[7:0]
+(5)test_Risc_16_bit.up.datapath.PC[7:0]
+(6)test_Risc_16_bit.up.datapath.PC[7:0]
+(7)test_Risc_16_bit.up.datapath.PC[7:0]
+@1401200
+-group_end
+@c00028
+test_Risc_16_bit.up.datapath.instr[15:0]
+@28
+(0)test_Risc_16_bit.up.datapath.instr[15:0]
+(1)test_Risc_16_bit.up.datapath.instr[15:0]
+(2)test_Risc_16_bit.up.datapath.instr[15:0]
+(3)test_Risc_16_bit.up.datapath.instr[15:0]
+(4)test_Risc_16_bit.up.datapath.instr[15:0]
+(5)test_Risc_16_bit.up.datapath.instr[15:0]
+(6)test_Risc_16_bit.up.datapath.instr[15:0]
+(7)test_Risc_16_bit.up.datapath.instr[15:0]
+(8)test_Risc_16_bit.up.datapath.instr[15:0]
+(9)test_Risc_16_bit.up.datapath.instr[15:0]
+(10)test_Risc_16_bit.up.datapath.instr[15:0]
+(11)test_Risc_16_bit.up.datapath.instr[15:0]
+(12)test_Risc_16_bit.up.datapath.instr[15:0]
+(13)test_Risc_16_bit.up.datapath.instr[15:0]
+(14)test_Risc_16_bit.up.datapath.instr[15:0]
+(15)test_Risc_16_bit.up.datapath.instr[15:0]
+@1401200
+-group_end
+@28
+test_Risc_16_bit.up.mem_op
+test_Risc_16_bit.up.mem_to_reg
+test_Risc_16_bit.up.mem_write_en
+@22
+test_Risc_16_bit.up.opcode[3:0]
+@28
+test_Risc_16_bit.up.reg_write_en
+@22
+test_Risc_16_bit.up.datapath.PC_next[7:0]
+test_Risc_16_bit.up.datapath.alu_out[7:0]
+@28
+test_Risc_16_bit.up.datapath.alu_sel[1:0]
+@22
+test_Risc_16_bit.up.datapath.reg_read_data1[7:0]
+test_Risc_16_bit.up.datapath.reg_read_data2[7:0]
+test_Risc_16_bit.up.datapath.reg_write_addrWB[3:0]
+test_Risc_16_bit.up.datapath.reg_write_dataWB[7:0]
+test_Risc_16_bit.up.datapath.reg_write_data[7:0]
+test_Risc_16_bit.up.datapath.alu_out[7:0]
+@28
+test_Risc_16_bit.up.datapath.mem_to_regMEM
+test_Risc_16_bit.up.datapath.mem_to_regEX
+@22
+test_Risc_16_bit.up.datapath.reg_write_dataWB[7:0]
+test_Risc_16_bit.up.datapath.reg_write_addrMEM[3:0]
+@28
+test_Risc_16_bit.up.datapath.reg_write_enWB
+@22
+test_Risc_16_bit.up.datapath.reg_write_dataWB[7:0]
+test_Risc_16_bit.up.datapath.data_read_data[7:0]
+test_Risc_16_bit.up.datapath.data_read_addr[7:0]
+test_Risc_16_bit.up.datapath.data_read_addrEX[7:0]
+test_Risc_16_bit.up.datapath.data_read_addrMEM[7:0]
+@23
+test_Risc_16_bit.up.datapath.data_write_dataMEM[7:0]
+@28
+test_Risc_16_bit.up.datapath.mem_write_enMEM
+test_Risc_16_bit.up.datapath.mem_op
+test_Risc_16_bit.up.datapath.mem_to_reg
+test_Risc_16_bit.up.datapath.mem_write_en
+@22
+test_Risc_16_bit.up.datapath.opcode[3:0]
+test_Risc_16_bit.up.datapath.reg_read_addr1[3:0]
+test_Risc_16_bit.up.datapath.reg_read_addr2[3:0]
+test_Risc_16_bit.up.datapath.reg_write_addr[3:0]
+test_Risc_16_bit.up.datapath.reg_write_data[7:0]
+@28
+test_Risc_16_bit.up.datapath.reg_write_en
+[pattern_trace] 1
+[pattern_trace] 0
