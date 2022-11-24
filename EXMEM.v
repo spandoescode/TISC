@@ -9,6 +9,7 @@ module EXMEM (
     input  [7:0] idata_write_addr,
     input  [7:0] idata_write_data,
     input  [7:0] idata_read_addr,
+    input  [7:0] inextPC,
     output reg [3:0] oreg_write_addr,
     output reg oreg_write_en,
     output reg omem_to_reg,
@@ -16,7 +17,8 @@ module EXMEM (
     output reg omem_write_en,
     output reg [7:0] odata_write_addr,
     output reg [7:0] odata_write_data,
-    output reg [7:0] odata_read_addr
+    output reg [7:0] odata_read_addr,
+    output reg [7:0] onextPC
 );
 
   always @(posedge (clk)) begin
@@ -30,6 +32,7 @@ module EXMEM (
       odata_write_data <= idata_write_data;
       odata_read_addr <= idata_read_addr;
       omem_to_reg <= imem_to_reg;
+      onextPC <= inextPC;
     end
   end
 

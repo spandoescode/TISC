@@ -1,21 +1,21 @@
 [*]
 [*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
-[*] Thu Nov 17 19:09:03 2022
+[*] Thu Nov 24 10:35:23 2022
 [*]
 [dumpfile] "/home/nik/Documents/sem7/projects/SDL/TISC/UP_test.vcd"
-[dumpfile_mtime] "Thu Nov 17 18:57:09 2022"
-[dumpfile_size] 9180
+[dumpfile_mtime] "Thu Nov 24 10:33:34 2022"
+[dumpfile_size] 10241
 [savefile] "/home/nik/Documents/sem7/projects/SDL/TISC/up_list.gtkw"
 [timestart] 0
-[size] 1305 772
-[pos] -1 -1
-*-5.892282 150 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[size] 1274 600
+[pos] 155 2
+*-6.420832 200 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_Risc_16_bit.
 [treeopen] test_Risc_16_bit.up.
 [sst_width] 233
 [signals_width] 246
 [sst_expanded] 1
-[sst_vpaned_height] 404
+[sst_vpaned_height] 280
 @28
 test_Risc_16_bit.clk
 @c00022
@@ -86,8 +86,9 @@ test_Risc_16_bit.up.datapath.data_read_data[7:0]
 test_Risc_16_bit.up.datapath.data_read_addr[7:0]
 test_Risc_16_bit.up.datapath.data_read_addrEX[7:0]
 test_Risc_16_bit.up.datapath.data_read_addrMEM[7:0]
-@23
 test_Risc_16_bit.up.datapath.data_write_dataMEM[7:0]
+@23
+test_Risc_16_bit.up.datapath.data_write_data[7:0]
 @28
 test_Risc_16_bit.up.datapath.mem_write_enMEM
 test_Risc_16_bit.up.datapath.mem_op

@@ -49,6 +49,18 @@ module DU (input clk,
     wire [7:0] data_read_addrMEM;
 
 
+    wire [7:0] reg_read_data1EX;
+    wire [7:0] reg_read_data2EX;
+
+
+    wire [7:0] reg_read_data1MEM;
+    wire [7:0] reg_read_data2MEM;
+
+    wire [7:0] PC_nextID;
+    wire [7:0] PC_nextEX;
+    wire [7:0] PC_nextMEM;
+
+
 
     
 
@@ -58,11 +70,11 @@ module DU (input clk,
     end
     
     always @(posedge(clk)) begin
-        @(posedge(clk));
-        @(posedge(clk));
-        @(posedge(clk));
-        @(posedge(clk));
-        PC <= PC_next;
+        if (PC_nextMEM[0] !== 1'bx) begin
+            // if (enable == 1'b1 ) out = in;
+            PC <= PC_nextMEM;
+        end
+        // PC <= PC_nextMEM;
     end
 
     
@@ -92,16 +104,18 @@ module DU (input clk,
     assign data_read_addr     = instr[7:0];
     assign data_write_addr = instr[7:0];
     
-    ALU alu(.A(reg_read_data1), .B(reg_read_data2), .sel(alu_sel), .Y(alu_out), .clk(clk));
+    ALU alu(.A(reg_read_data1EX), .B(reg_read_data2EX), .sel(alu_sel), .Y(alu_out), .clk(clk));
 
     // EXMEM exmem(.ialu_out(alu_outEX), .imem_to_reg(mem_to_regEX), oalu_out(alu_outMEM), omem_to_reg() );
-    IFID ifid(clk, 1'b1,data_read_addr, data_write_addr, data_read_addrID,data_write_addrID);
+    IFID ifid(clk, 1'b1,data_read_addr, data_write_addr, PC_next, data_read_addrID,data_write_addrID, PC_nextID);
 
-    IDEX idex(clk, 1'b1, reg_write_addr, reg_write_en, mem_to_reg, mem_write_en, data_write_addrID, data_write_data, data_read_addrID, reg_write_addrEX, reg_write_enEX,  mem_to_regEX, mem_write_enEX, data_write_addrEX, data_write_dataEX, data_read_addrEX);
+    IDEX idex(clk, 1'b1, reg_write_addr, reg_write_en, reg_read_data1, reg_read_data2, mem_to_reg, mem_write_en, data_write_addrID, data_write_data, data_read_addrID, PC_nextID, reg_write_addrEX, reg_write_enEX, reg_read_data1EX, reg_read_data2EX,  mem_to_regEX, mem_write_enEX, data_write_addrEX, data_write_dataEX, data_read_addrEX, PC_nextEX);
     
-    EXMEM exmem(clk, 1'b1, reg_write_addrEX, reg_write_enEX, mem_to_regEX, alu_out, mem_write_enEX, data_write_addrEX, data_write_dataEX, data_read_addrEX, reg_write_addrMEM, reg_write_enMEM, mem_to_regMEM, alu_outMEM, mem_write_enMEM, data_write_addrMEM, data_write_dataMEM, data_read_addrMEM);
+    EXMEM exmem(clk, 1'b1, reg_write_addrEX, reg_write_enEX, mem_to_regEX, alu_out, mem_write_enEX, data_write_addrEX, data_write_dataEX, data_read_addrEX, PC_nextEX, reg_write_addrMEM, reg_write_enMEM, mem_to_regMEM, alu_outMEM, mem_write_enMEM, data_write_addrMEM, data_write_dataMEM, data_read_addrMEM, PC_nextMEM);
 
     MEMWB memwb(clk, 1'b1, reg_write_addrMEM, reg_write_data, reg_write_enMEM, mem_to_regMEM, alu_out, reg_write_addrWB, reg_write_dataWB, reg_write_enWB, mem_to_regWB, alu_outWB);
+
+    // PCIncr pcincr(clk, 1'b1, PC_nextMEM, PC);
 
     assign reg_write_data = (mem_to_regMEM == 1'b1) ? data_read_data : alu_out;
     assign opcode         = instr[15:12];
