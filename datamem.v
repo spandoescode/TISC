@@ -24,7 +24,7 @@ module datamem (input clk,
         // "\tmemory[1] = %b\n", MEM[1],
         // "\tmemory[2] = %b\n", MEM[2],
         // "\tmemory[3] = %b\n", MEM[3],);
-        #250;
+        #210;
         $fdisplay(f,"time = %d\n", $time, 
         "\tmemory[0] = %b\n", MEM[0],   
         "\tmemory[1] = %b\n", MEM[1],

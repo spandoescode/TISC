@@ -4,7 +4,8 @@ module DU (input clk,
            input logic mem_write_en,
            input logic mem_to_reg,
            input logic mem_op,
-           output [3:0] opcode);
+           output [3:0] opcode, 
+           output [2:0] flag);
     
     reg [7:0] PC;
     wire [7:0] PC_next;
@@ -59,20 +60,21 @@ module DU (input clk,
     wire [7:0] PC_nextID;
     wire [7:0] PC_nextEX;
     wire [7:0] PC_nextMEM;
+    wire [7:0] PC_nextWB;
 
 
-
-    
+    // wire [2:0] flag;   
 
 
     initial begin
         PC <= 8'd0;
+        // flag <= 3'b0;
     end
     
     always @(posedge(clk)) begin
-        if (PC_nextMEM[0] !== 1'bx) begin
+        if (PC_nextWB[0] !== 1'bx) begin
             // if (enable == 1'b1 ) out = in;
-            PC <= PC_nextMEM;
+            PC <= PC_nextWB;
         end
         // PC <= PC_nextMEM;
     end
@@ -113,8 +115,9 @@ module DU (input clk,
     
     EXMEM exmem(clk, 1'b1, reg_write_addrEX, reg_write_enEX, mem_to_regEX, alu_out, mem_write_enEX, data_write_addrEX, data_write_dataEX, data_read_addrEX, PC_nextEX, reg_write_addrMEM, reg_write_enMEM, mem_to_regMEM, alu_outMEM, mem_write_enMEM, data_write_addrMEM, data_write_dataMEM, data_read_addrMEM, PC_nextMEM);
 
-    MEMWB memwb(clk, 1'b1, reg_write_addrMEM, reg_write_data, reg_write_enMEM, mem_to_regMEM, alu_out, reg_write_addrWB, reg_write_dataWB, reg_write_enWB, mem_to_regWB, alu_outWB);
-
+    MEMWB memwb(clk, 1'b1, reg_write_addrMEM, reg_write_data, reg_write_enMEM, mem_to_regMEM, alu_out,PC_nextMEM, reg_write_addrWB, reg_write_dataWB, reg_write_enWB, mem_to_regWB, alu_outWB, PC_nextWB);
+    
+    PCSC pcsc(clk, PC_next, PC_nextID, PC_nextEX, PC_nextMEM, PC_nextWB, flag);
     // PCIncr pcincr(clk, 1'b1, PC_nextMEM, PC);
 
     assign reg_write_data = (mem_to_regMEM == 1'b1) ? data_read_data : alu_out;
